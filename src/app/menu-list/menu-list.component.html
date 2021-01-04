@@ -1,0 +1,11 @@
+<mat-selection-list #menu [multiple]="false">
+    <mat-list-option (click)="clickMenu(0)" [selected]="true" [value]="allViewMenu">
+        {{allViewMenu.name}}
+    </mat-list-option>
+
+    <ng-container *ngFor="let menu of menuList">
+        <mat-list-option (click)="clickMenu(menu.id)" [value]="menuList">
+            {{menu.name}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>

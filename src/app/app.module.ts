@@ -12,10 +12,14 @@ import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MenuListSettingDialogComponent } from './menu-list-setting-dialog/menu-list-setting-dialog.component';
+import { MatTableModule } from '@angular/material/table';
+import { PostComponent } from './post/post.component';
 
 const dbConfig: DBConfig = {
     name: 'pLogDB',
-    version: 1,
+    version: 2,
     objectStoresMeta: [
         {
             store: 'menu',
@@ -30,7 +34,7 @@ const dbConfig: DBConfig = {
             storeSchema: [
                 { name: 'title', keypath: 'title', options: { unique: false } },
                 { name: 'note', keypath: 'note', options: { unique: false } },
-                { name: 'menu', keypath: 'menu', options: { unique: false } },
+                { name: 'menuId', keypath: 'menuId', options: { unique: false } },
             ]
         }
     ]
@@ -40,7 +44,9 @@ const dbConfig: DBConfig = {
     declarations: [
         AppComponent,
         PostAddComponent,
-        MenuListComponent
+        MenuListComponent,
+        MenuListSettingDialogComponent,
+        PostComponent
     ],
     imports: [
         NgxIndexedDBModule.forRoot(dbConfig),
@@ -51,7 +57,9 @@ const dbConfig: DBConfig = {
         MatInputModule,
         MatButtonModule,
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatDialogModule,
+        MatTableModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
